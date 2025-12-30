@@ -1,7 +1,16 @@
-#chipmunk {
-    color: green;
-    font-weight: bold;
+.draggable {
+    position: absolute;
+    cursor: move;
+    background: linear-gradient(#e3f304, #ee0404);
+    border: 2px solid #614a4a;
 }
 
-#btn1 {
+#chipmunk {
+    display: flex;
+    background: linear-gradient(to bottom right,rgb(255, 115, 0), rgba(100, 40, 0, 0.918));
+    height: 50px;
+    width: 150px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
