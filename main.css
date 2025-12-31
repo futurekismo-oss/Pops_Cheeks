@@ -1,25 +1,88 @@
-.draggable {
+/* Makes scrollbars invisible */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+element {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+@keyframes feed-anim {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(-15deg); }
+    45% { transform: translate(-50%, -50%) rotate(15deg); }
+    50% { transform: translate(-50%, -50%) rotate(0deg); }
+    65% { transform: translate(-50%, -50%) rotate(-15deg); }
+    75% { transform: translate(-50%, -50%) rotate(0deg); }
+    95% { transform: translate(-50%, -50%) rotate(15deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+
+    0% { transform: translate(-50%, -50%) scale(1); }
+    25% { transform: translate(-50%, -50%) scale(1.35); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    75% { transform: translate(-50%, -50%) scale(1.35); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+
+    0% { opacity: 1; }
+    25% { opacity: 0.7; }
+    50% { opacity: 1; }
+    75% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@keyframes move-shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-5px, 5px) rotate(-10deg); }
+    50% { transform: translate(5px, -5px) rotate(10deg); }
+    75% { transform: translate(-5px, 5px) rotate(-10deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes text-fade-in-and-out {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.coco_pops {
     position: absolute;
     cursor: move;
-    background: linear-gradient(#e3f304, #ee0404);
-    border: 2px solid #614a4a;
 }
+
 
 #chipmunk {
-    display: flex;
-    background: linear-gradient(to bottom right,rgb(255, 115, 0), rgba(100, 40, 0, 0.918));
-    height: 50px;
-    width: 150px;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: auto;
+    
 }
 
-#score {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#chipmunk.shake {
+    animation: feed-anim 0.4s infinite;
 }
+
+.shake {
+    animation: move-shake 0.4s infinite;
+}
+
+#text {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.2em;
+    color: #333;
+    text-shadow: 2px 2px 4px #aaa;
+}
+
+
+.fade {
+    animation: text-fade-in-and-out 3s;
+}
+
