@@ -3,17 +3,16 @@ const coco_pops_image = "img/coco_pops.png";
 const chipmunk = document.getElementById('chipmunk');
 const text = document.getElementById('text');
 
-update_text(text, score);
-
-// Disable right click context menu
-document.addEventListener('contextmenu', event => event.preventDefault());
+// Audio element
+const feed_sound = new Audio("audio/chipmunk.mp3");
 
 // How many coco pops the chipmunk can eat before he explodes.
 const chipmunk_max_diet = 100;
 
-
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
+
+update_text(text, score);
 
 var pops_on_screen = 0;
 const max_pops_on_screen = 4;
@@ -94,7 +93,7 @@ function checkCollision(pop) {
   return !(popRect.right < chipRect.left || popRect.left > chipRect.right || popRect.bottom < chipRect.top || popRect.top > chipRect.bottom);
 }
 // Check if chipmunk has reached max diet and explode
-function checkCchipmunkDiet() {
+function checkChipmunkDiet() {
 
   if (score >= chipmunk_max_diet) {
     alert("The chipmunk has exploded!");
@@ -125,7 +124,7 @@ spawnPops();
 function feedChipmunk(pop) {
   const rect = pop.getBoundingClientRect();
   crunch(rect.left + rect.width / 2, rect.top + rect.height / 2);
-
+  feed_sound.play();
 
   pops_on_screen--;
   respawn_counter++;
@@ -134,7 +133,7 @@ function feedChipmunk(pop) {
   update_text(text, score);
 
   document.body.removeChild(pop);
-  checkCchipmunkDiet();
+  checkChipmunkDiet();
 
   chipmunk.classList.add("shake");
   
@@ -143,9 +142,10 @@ function feedChipmunk(pop) {
   }, 400);
 }
 
+
+// Chipmunk click animation
 chipmunk.addEventListener("click", () => {
   chipmunk.classList.add("shake");
-  
   setTimeout(() => {
     chipmunk.classList.remove("shake");
   }, 400);
