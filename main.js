@@ -5,9 +5,10 @@ const text = document.getElementById('text');
 
 // Audio element
 const feed_sound = new Audio("audio/chipmunk.mp3");
+const click_sound = new Audio("audio/chipmunk_laugh.mp3");
 
 // How many coco pops the chipmunk can eat before he explodes.
-const chipmunk_max_diet = 100;
+const chipmunk_max_diet = 25;
 
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
@@ -94,18 +95,13 @@ function checkCollision(pop) {
 }
 // Check if chipmunk has reached max diet and explode
 function checkChipmunkDiet() {
-
-  if (score >= chipmunk_max_diet) {
-    alert("The chipmunk has exploded!");
-  } else {
-
-    if (respawn_counter == 2) {
+  if (respawn_counter == 2) {
       spawnPops();
       respawn_counter = 0;
-    }
+  }
     
   }
-}
+
 
 // Create coco pops
 
@@ -146,8 +142,9 @@ function feedChipmunk(pop) {
 // Chipmunk click animation
 chipmunk.addEventListener("click", () => {
   chipmunk.classList.add("shake");
+  click_sound.play();
   setTimeout(() => {
     chipmunk.classList.remove("shake");
-  }, 400);
+  }, 1200);
 });
 
