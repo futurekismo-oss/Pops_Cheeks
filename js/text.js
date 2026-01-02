@@ -3,15 +3,16 @@ const voice_1 = new Audio("audio/Glados_voicelines/glados_voice_-01.mp3")
 const voice_2 = new Audio("audio/Glados_voicelines/glados_voice_-02.mp3")
 const voice_3 = new Audio("audio/Glados_voicelines/glados_voice_-03.mp3")
 const voice_4 = new Audio("audio/Glados_voicelines/glados_voice_-04.mp3")
-// ============NEEDS REWORK===================== 
+// ==================NEEDS REWORK===================== //
 const voice_5 = new Audio("audio/Glados_voicelines/glados_voice_-05.mp3")
 
 var stages = [
     "Pip enjoys the cereal.",
     "Pip is slowing down.",
-    "Fun Fact: Cocopops were desgined for chipmunks!",
-    "Pip is tired",
-    "You have pushed Pip too far!"
+    "Fun Fact: Cocopops weren't desgined for chipmunks!",
+    "Pip is tired!!",
+    "You have pushed Pip too far!",
+    "The chipmunk is hungry!"
 ]
 
 async function updateText(element, score) {
@@ -19,7 +20,7 @@ async function updateText(element, score) {
     element.classList.remove("fade"); // Remove fade class first
     switch(score) {
         case 0:
-            text = "The chipmunk is hungry!";
+            text = stages[-1];
             break;
         case 5:
             text = stages[0];
