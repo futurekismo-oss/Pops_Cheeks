@@ -17,7 +17,7 @@ const click_sound = new Audio("audio/chipmunk_laugh.mp3");
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
 
-update_text(text, score);
+updateText(text, score);
 
 var pops_on_screen = 0;
 const max_pops_on_screen = 4;
@@ -137,6 +137,7 @@ function feedChipmunk(pop) {
 
   updateUI(pop);
   remove_pop(pop);
+  updateText(text, score);
 }
 
 

@@ -14,7 +14,7 @@ var stages = [
     "You have pushed Pip too far!"
 ]
 
-async function update_text(element, score) {
+async function updateText(element, score) {
     var text = "";
     element.classList.remove("fade"); // Remove fade class first
     switch(score) {
