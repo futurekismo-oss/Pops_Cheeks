@@ -46,6 +46,39 @@ element {
     100% { opacity: 1; }
 }
 
+@keyframes warning-flash {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+    
+    0% { color: red; }
+    50% { color: white; }
+    100% { color: red; }
+}
+
+@keyframes enlarge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+@keyframes death-shake {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    10% { transform: translate(-48%, -50%) rotate(-5deg); }
+    20% { transform: translate(-52%, -50%) rotate(5deg); }
+    30% { transform: translate(-48%, -52%) rotate(-3deg); }
+    40% { transform: translate(-52%, -48%) rotate(3deg); }
+    50% { transform: translate(-50%, -50%) rotate(0deg); }
+    60% { transform: translate(-48%, -50%) rotate(-2deg); }
+    70% { transform: translate(-52%, -50%) rotate(2deg); }
+    80% { transform: translate(-50%, -52%) rotate(-1deg); }
+    90% { transform: translate(-50%, -48%) rotate(1deg); }
+}
+
+.death-shake {
+    animation: death-shake 0.5s ease-in-out infinite;
+}
+
 .coco_pops {
     position: absolute;
     cursor: move;
@@ -86,3 +119,14 @@ element {
     animation: text-fade-in-and-out 3s;
 }
 
+.warning {
+    animation: warning-flash 2s infinite;
+}
+
+.warning.shake {
+    animation: warning-flash 2s infinite, move-shake 0.4s infinite;
+}
+
+.warning.enlarge {
+    animation: warning-flash 2s infinite, move-shake 0.4s infinite, enlarge 2s infinite;
+}

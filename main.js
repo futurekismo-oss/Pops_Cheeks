@@ -12,6 +12,7 @@ const coco_pops_image = "img/coco_pops.png";
 const chipmunk = document.getElementById('chipmunk');
 const text = document.getElementById('text');
 const feed_sound = new Audio("audio/chipmunk.mp3");
+const click_sound = new Audio("audio/chipmunk_laugh.mp3");
 
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
@@ -142,7 +143,8 @@ function feedChipmunk(pop) {
 // Chipmunk click animation
 chipmunk.addEventListener("click", () => {
   chipmunk.classList.add("shake");
+  click_sound.play();
   setTimeout(() => {
     chipmunk.classList.remove("shake");
-  }, 400);
+  }, 1200);
 });
