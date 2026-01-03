@@ -1,13 +1,17 @@
+let state_machine = [
+  "idle",
+  "eating",
+  "critical",
+  "tired",
+  "point_of_no_return",
+  "exploding"
+];
+
 // Webpage elements
 const coco_pops_image = "img/coco_pops.png";
 const chipmunk = document.getElementById('chipmunk');
 const text = document.getElementById('text');
-
-// Audio element
 const feed_sound = new Audio("audio/chipmunk.mp3");
-
-// How many coco pops the chipmunk can eat before he explodes.
-const chipmunk_max_diet = 100;
 
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
@@ -91,24 +95,9 @@ function checkCollision(pop) {
   const chipRect = chipmunk.getBoundingClientRect();
   
   return !(popRect.right < chipRect.left || popRect.left > chipRect.right || popRect.bottom < chipRect.top || popRect.top > chipRect.bottom);
-}
-// Check if chipmunk has reached max diet and explode
-function checkChipmunkDiet() {
-
-  if (score >= chipmunk_max_diet) {
-    alert("The chipmunk has exploded!");
-  } else {
-
-    if (respawn_counter == 2) {
-      spawnPops();
-      respawn_counter = 0;
-    }
-    
-  }
-}
+} 
 
 // Create coco pops
-
 async function spawnPops() {
   while (pops_on_screen < max_pops_on_screen) {
     new CocoPops();
@@ -116,30 +105,37 @@ async function spawnPops() {
     await wait(1000);
   }
 }
-
 spawnPops();
 
-// Feed chipmunk
+// Remove coco pops
+function remove_pop(pop) {
+  document.body.removeChild(pop);
+  if (respawn_counter == 2) {
+      spawnPops();
+      respawn_counter = 0;
+    }
+}  
 
-function feedChipmunk(pop) {
+function updateUI(pop) {
   const rect = pop.getBoundingClientRect();
   crunch(rect.left + rect.width / 2, rect.top + rect.height / 2);
   feed_sound.play();
-
-  pops_on_screen--;
-  respawn_counter++;
-
-  score++;
-  update_text(text, score);
-
-  document.body.removeChild(pop);
-  checkChipmunkDiet();
 
   chipmunk.classList.add("shake");
   
   setTimeout(() => {
     chipmunk.classList.remove("shake");
   }, 400);
+}
+
+// Feed chipmunk
+function feedChipmunk(pop) {
+  pops_on_screen--;
+  respawn_counter++;
+  score++;
+
+  updateUI(pop);
+  remove_pop(pop);
 }
 
 
@@ -150,4 +146,3 @@ chipmunk.addEventListener("click", () => {
     chipmunk.classList.remove("shake");
   }, 400);
 });
-
