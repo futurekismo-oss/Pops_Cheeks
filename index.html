@@ -15,6 +15,13 @@
         <!-- References to CSS and JavaScript files -->
         <link rel="stylesheet" href="main.css">
         
+        <script>
+            // Redirect to cutscene if this is the first visit
+            if (!sessionStorage.getItem('cutsceneSeen')) {
+                sessionStorage.setItem('cutsceneSeen', 'true');
+                window.location.href = "cutscene/cutscene.html";
+            }
+        </script>
 
     </head>
 
@@ -26,10 +33,22 @@
 
 
         <!-- Scripts -->
-        <script src="js/endgame.js"></script>
-        <script src="js/particles.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/statemachine.js"></script>
-        <script src="main.js"></script>
+        
+        <script src="js/endgame.js" defer></script>
+        <script src="js/particles.js" defer></script>
+        <script src="js/utils.js" defer></script>
+        <script src="js/statemachine.js" defer></script>
+        <script src="main.js" defer></script>
+
+        <!-- Temporary script -->
+        <script>
+        // Fade in when page loads
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(function() {
+                document.body.style.opacity = '1';
+            }, 10);
+        });
+        </script>
     </body>
 </html>

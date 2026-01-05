@@ -1,0 +1,63 @@
+/* Page Fade Effect */
+body {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+#title {
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.2em;
+    color: #333;
+    text-shadow: 2px 2px 4px #aaa;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#title.visible {
+    opacity: 1;
+}
+
+#cutscene_text {
+    position: absolute;
+    top: 22%;
+    left: 27%;
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.2em;
+    color: #333;
+    text-shadow: 2px 2px 4px #aaa;
+    animation: typing 2s;
+}
+
+#play_button {
+    position: absolute;
+    bottom: 15%;
+    left: 47%;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#play_button:hover {
+    background-color: #e2d876;
+}
+
+#play_button.visible {
+    opacity: 1;
+}
