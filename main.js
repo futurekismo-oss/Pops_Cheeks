@@ -77,7 +77,7 @@ function dragElement(elmnt) {
     elmnt.classList.remove("shake"); // Remove shake on drag end
     
     // Final collision check on drop
-    if (checkCollision(elmnt)) {
+    if (checkCollision(elmnt) && !endgameBool) {
       feedChipmunk(elmnt);
     }
   }

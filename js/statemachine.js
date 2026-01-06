@@ -13,15 +13,14 @@ const voices = [
     new Audio("audio/Glados_voicelines/glados_voice_-02.mp3"),
     new Audio("audio/Glados_voicelines/glados_voice_-03.mp3"),
     new Audio("audio/Glados_voicelines/glados_voice_-04.mp3"),
-    // ==================NEEDS REWORK===================== //
-    new Audio("audio/Glados_voicelines/glados_voice_-05.mp3")
+    new Audio("audio/Glados_voicelines/glados_voice_endgame.wav")
 ]
 
 const stateClasses = [
     [],
     [],
     ["warning"],
-    ["shake"],
+    ["warning", "shake"],
     ["warning", "enlarge"],
     []
 ]
@@ -39,7 +38,7 @@ let currentStateIndex = 0;
 
 function getCurrentState(score) {
     for (let i = stateTresholds.length - 1; i >= 0; i--) {
-        if (score >= stateTresholds[i]) {
+        if (score == stateTresholds[i]) {
             return i;
         }
     }
@@ -69,8 +68,8 @@ function applyStateClasses(index) {
     text.classList.add("fade");
 
 
-    if (voices[index + 1]) {
-        voices[index + 1].play();
+    if (voices[index]) {
+        voices[index].play();
     }
 
     if (index === stateTresholds.length - 1) {

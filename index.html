@@ -32,15 +32,8 @@
         </div>
 
 
-        <!-- Scripts -->
         
-        <script src="js/endgame.js" defer></script>
-        <script src="js/particles.js" defer></script>
-        <script src="js/utils.js" defer></script>
-        <script src="js/statemachine.js" defer></script>
-        <script src="main.js" defer></script>
-
-        <!-- Temporary script -->
+        <!-- Cutscene_script -->
         <script>
         // Fade in when page loads
         window.addEventListener('load', function() {
@@ -49,6 +42,17 @@
                 document.body.style.opacity = '1';
             }, 10);
         });
+
+        var endgameBool = false;
         </script>
+        
+        <!-- Scripts -->
+        <script src="js/endgame.js" defer></script>
+        <script src="js/particles.js" defer></script>
+        <script src="js/utils.js" defer></script>
+        <script src="js/statemachine.js" defer></script>
+        <script src="main.js" defer></script>
+
+        
     </body>
 </html>

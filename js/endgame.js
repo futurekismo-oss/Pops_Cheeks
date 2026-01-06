@@ -1,4 +1,5 @@
 async function endGame() {
+    endgameBool = true;
     const chipmunk = document.getElementById('chipmunk');
     const body = document.body;
     

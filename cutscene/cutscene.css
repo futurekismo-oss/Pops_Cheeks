@@ -45,7 +45,7 @@ body.fade-out {
 
 #play_button {
     position: absolute;
-    bottom: 15%;
+    bottom: 20%;
     left: 46%;
     padding: 10px 20px;
     text-align: center;
@@ -54,6 +54,8 @@ body.fade-out {
     cursor: pointer;
     border-radius: 15px;
     opacity: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     transition: opacity 1s;
 }
 
