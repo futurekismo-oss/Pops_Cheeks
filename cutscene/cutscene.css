@@ -68,3 +68,23 @@ body.fade-out {
 #play_button.visible {
     opacity: 1;
 }
+
+/* Skips button */
+#skip_btn {
+    position: absolute;
+    margin-left: 95%;
+    background-color: transparent;
+    border: 0px;
+    font-size: 30px;
+    transition: opacity 1s;
+}
+
+#skip_btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transition: 0.2s;
+}
+
+#skip_btn.invisible {
+    opacity: 0;
+}

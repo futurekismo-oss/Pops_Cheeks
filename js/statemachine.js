@@ -38,7 +38,7 @@ let currentStateIndex = 0;
 
 function getCurrentState(score) {
     for (let i = stateTresholds.length - 1; i >= 0; i--) {
-        if (score == stateTresholds[i]) {
+        if (score >= stateTresholds[i]) {
             return i;
         }
     }

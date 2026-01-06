@@ -1,6 +1,7 @@
 const text = "You were talking in the park, where you found a starving chipmunk. You took it home, and having no other food, You decided to feed it coco pops.";
 const textElement = document.getElementById("text_paragraph");
 const playButton = document.getElementById("play_button");
+const skipButton = document.getElementById("skip_btn")
 const title = document.getElementById("title");
 let index = 0;
 
@@ -13,6 +14,8 @@ function typeWriter() {
         // Show the button when typing is done
         playButton.classList.add("visible");
         title.classList.add("visible");
+        // Hide skip btn
+        skipButton.classList.add("invisible")
     }
 }
 
@@ -21,6 +24,15 @@ typeWriter();
 
 // Button click handler
 playButton.addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent immediate navigation
+    document.body.classList.add("fade-out");
+
+    setTimeout(function () {
+        window.location.href = "../index.html";
+    }, 500); // Wait for fade-out to complete (matches CSS transition time
+});
+
+skipButton.addEventListener("click", function (e) {
     e.preventDefault(); // Prevent immediate navigation
     document.body.classList.add("fade-out");
 
