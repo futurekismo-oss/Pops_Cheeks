@@ -16,11 +16,9 @@
         <link rel="stylesheet" href="main.css">
         
         <script>
-            // Redirect to cutscene if this is the first visit
-            if (!sessionStorage.getItem('cutsceneSeen')) {
-                sessionStorage.setItem('cutsceneSeen', 'true');
-                window.location.href = "cutscene/cutscene.html";
-            }
+            // True Global Variables
+            var endgameBool = false;
+            var critStg = false;
         </script>
 
     </head>
@@ -33,23 +31,10 @@
 
 
         
-        <!-- Cutscene_script -->
-        <script>
-        // Fade in when page loads
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            setTimeout(function() {
-                document.body.style.opacity = '1';
-            }, 10);
-        });
-
-        var endgameBool = false;
-        </script>
-        
         <!-- Scripts -->
+        <script src="js/utils.js" defer></script>
         <script src="js/endgame.js" defer></script>
         <script src="js/particles.js" defer></script>
-        <script src="js/utils.js" defer></script>
         <script src="js/statemachine.js" defer></script>
         <script src="main.js" defer></script>
 

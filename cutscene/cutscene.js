@@ -1,8 +1,15 @@
-const text = "You were talking in the park, where you found a starving chipmunk. You took it home, and having no other food, You decided to feed it coco pops.";
+const text = "You were taking a walk in the park, where you found a starving chipmunk. You took it home, and having no other food, you decided to feed it coco pops.";
 const textElement = document.getElementById("text_paragraph");
 const playButton = document.getElementById("play_button");
 const skipButton = document.getElementById("skip_btn")
 const title = document.getElementById("title");
+
+// Ambient music
+const bg_music = new Audio("../audio/cutscene.wav")
+bg_music.volume = 0.4;
+bg_music.loop=true;
+
+
 let index = 0;
 
 function typeWriter() {
@@ -21,6 +28,7 @@ function typeWriter() {
 
 // Start typing when page loads
 typeWriter();
+bg_music.play();
 
 // Button click handler
 playButton.addEventListener("click", function (e) {

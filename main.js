@@ -8,6 +8,10 @@ const click_sound = new Audio("audio/chipmunk_laugh.mp3");
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
 
+// Crackle audio
+
+
+
 window.addEventListener('load', () => {
   updateState(0);
 });
@@ -18,28 +22,28 @@ var respawn_counter = 0;
 
 // coco pops class
 class CocoPops {
-    constructor() {
-        // Creates a draggable div
-        var coco_pops = document.createElement('div');
+  constructor() {
+    // Creates a draggable div
+    var coco_pops = document.createElement('div');
 
-        // Slot in the text the new draggable should have
-        coco_pops.innerHTML = "<img src='" + coco_pops_image + "' width='100px' height='auto'>";
-        coco_pops.className = "coco_pops";
+    // Slot in the text the new draggable should have
+    coco_pops.innerHTML = "<img src='" + coco_pops_image + "' width='100px' height='auto'>";
+    coco_pops.className = "coco_pops";
 
-        const maxX = window.innerWidth - 100; 
-        const maxY = window.innerHeight - 100;
+    const maxX = window.innerWidth - 100;
+    const maxY = window.innerHeight - 100;
 
-        // Random position
-        coco_pops.style.position = "absolute";
-        coco_pops.style.left = Math.floor(Math.random() * maxX) + "px";
-        coco_pops.style.top = Math.floor(Math.random() * maxY) + "px";
+    // Random position
+    coco_pops.style.position = "absolute";
+    coco_pops.style.left = Math.floor(Math.random() * maxX) + "px";
+    coco_pops.style.top = Math.floor(Math.random() * maxY) + "px";
 
-        // Make the draggable in html
-        document.body.appendChild(coco_pops);
+    // Make the draggable in html
+    document.body.appendChild(coco_pops);
 
-        dragElement(coco_pops);
-        
-    }
+    dragElement(coco_pops);
+
+  }
 }
 
 // Makes element draggable
@@ -55,6 +59,7 @@ function dragElement(elmnt) {
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
     elmnt.classList.add("shake"); // Add shake on drag start
+    crackle();
   }
 
   function elementDrag(e) {
@@ -66,7 +71,7 @@ function dragElement(elmnt) {
     pos4 = e.clientY;
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    
+
     // Check collision while dragging
     checkCollision(elmnt);
   }
@@ -75,7 +80,7 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
     elmnt.classList.remove("shake"); // Remove shake on drag end
-    
+
     // Final collision check on drop
     if (checkCollision(elmnt) && !endgameBool) {
       feedChipmunk(elmnt);
@@ -87,9 +92,9 @@ function dragElement(elmnt) {
 function checkCollision(pop) {
   const popRect = pop.getBoundingClientRect();
   const chipRect = chipmunk.getBoundingClientRect();
-  
+
   return !(popRect.right < chipRect.left || popRect.left > chipRect.right || popRect.bottom < chipRect.top || popRect.top > chipRect.bottom);
-} 
+}
 
 // Create coco pops
 async function spawnPops() {
@@ -105,10 +110,10 @@ spawnPops();
 function remove_pop(pop) {
   document.body.removeChild(pop);
   if (respawn_counter == 2) {
-      spawnPops();
-      respawn_counter = 0;
-    }
-}  
+    spawnPops();
+    respawn_counter = 0;
+  }
+}
 
 function updateUI(pop) {
   const rect = pop.getBoundingClientRect();
@@ -116,7 +121,7 @@ function updateUI(pop) {
   feed_sound.play();
 
   chipmunk.classList.add("shake");
-  
+
   setTimeout(() => {
     chipmunk.classList.remove("shake");
   }, 400);
@@ -133,12 +138,25 @@ function feedChipmunk(pop) {
   updateState(score);
 }
 
+function crackle() {
+  const crackles = [
+    new Audio("audio/crackle_sounds/crackle01.wav"),
+    new Audio("audio/crackle_sounds/crackle02.wav"),
+    new Audio("audio/crackle_sounds/crackle03.wav"),
+    new Audio("audio/crackle_sounds/crackle04.wav")
+  ];
+
+  const randomIndex = Math.floor(Math.random() * crackles.length);
+  crackles[randomIndex].play();
+}
 
 // Chipmunk click animation
 chipmunk.addEventListener("click", () => {
-  chipmunk.classList.add("shake");
-  click_sound.play();
-  setTimeout(() => {
-    chipmunk.classList.remove("shake");
-  }, 1200);
+  if (critStg != true) {
+    chipmunk.classList.add("shake");
+    click_sound.play();
+    setTimeout(() => {
+      chipmunk.classList.remove("shake");
+    }, 1200);
+  }
 });
