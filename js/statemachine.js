@@ -31,7 +31,7 @@ const stateTresholds = [
     10,
     20,
     30,
-    35
+    40
 ];
 
 
