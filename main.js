@@ -8,10 +8,6 @@ const click_sound = new Audio("audio/chipmunk_laugh.mp3");
 // How many coco pops the chipmunk has eaten so far.
 var score = 0;
 
-// Crackle audio
-
-
-
 window.addEventListener('load', () => {
   updateState(0);
 });

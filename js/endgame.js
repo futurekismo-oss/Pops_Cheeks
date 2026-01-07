@@ -1,13 +1,11 @@
-async function endGame(type) {
+async function endGame() {
     endgameBool = true;
     const chipmunk = document.getElementById('chipmunk');
     const body = document.body;
 
     // 1. Chipmunk shakes violently
-    if (type == 1) {
-        chipmunk.classList.add('death-shake');
-        await wait(2000);
-    }
+    chipmunk.classList.add('death-shake');
+    await wait(2000);
     // 2 seconds of shaking
 
     // 2. Start fading chipmunk + darkening screen simultaneously

@@ -94,26 +94,16 @@ function applyStateClasses(index) {
     }
 
     if (index == 3) {
-        crtStg = true;
+        critStg = true;
         bgMusic.pause();
         bgMusic = new Audio("audio/critical_stage.wav");
         bgMusic.play();
-        critical(score);
-        startInactivityWatch();
     }
 
     if (index === stateTresholds.length - 1) {
-        endGame(1);
+        endGame();
         setTimeout(() => {
             voices[voices.length - 1].play();
         }, 4000);
     }
-}
-
-async function critical(score) {
-    const choice = new Audio("audio/Glados_voicelines/choice.wav");
-    choice.volume = 0.7;
-    await wait(6000);
-    choice.play();
-
 }
