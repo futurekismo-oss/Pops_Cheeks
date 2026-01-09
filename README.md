@@ -1,15 +1,11 @@
-# Pops-Cheeks
-A web based game about a chipmunk, who you have to feed coco pops, funny little idea. ** spoliers **
-
-
+## Pops-Cheeks
+A web-based game about feeding a chipmunk coco pops. A small experimental idea.
 
 ## Credits
+Special thanks to `Itseme` and the game `We Become What We Behold` for inspiration.
 
-Special thanks to ```Itseme``` and the game ```We became what we behold```
+Thanks to `Pixabay` for free assets and music.
 
-also tahnks to ``pixabay`` for prudcing me with free assets and music
+Some of the art in the game is `AI-generated` or `AI-enhanced`.
 
-some of the art in the game are `AI-enhanced and generated`
-
-also credits to all the artists who put free royalty free music, thanks for very music
-
+Additional thanks to all artists who provide free, royalty-free music.
