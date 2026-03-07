@@ -5,7 +5,6 @@ const text = document.getElementById('text');
 const feed_sound = new Audio("audio/chipmunk.mp3");
 const click_sound = new Audio("audio/chipmunk_laugh.mp3");
 
-// How many coco pops the chipmunk has eaten so far.
 var score = 0;
 
 window.addEventListener('load', () => {
@@ -19,10 +18,8 @@ var respawn_counter = 0;
 // coco pops class
 class CocoPops {
   constructor() {
-    // Creates a draggable div
     var coco_pops = document.createElement('div');
 
-    // Slot in the text the new draggable should have
     coco_pops.innerHTML = "<img src='" + coco_pops_image + "' width='100px' height='auto'>";
     coco_pops.className = "coco_pops";
 
